@@ -1,0 +1,26 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env / secrets (in case you add anything later)
+.env
+.env.local
+
+# If you ever add Node tooling (e.g. a build step, linter, or local server)
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# If you deploy via Vercel/Netlify CLI
+.vercel/
+.netlify/
+
+# Logs
+*.log
