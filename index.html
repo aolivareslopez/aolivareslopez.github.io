@@ -105,27 +105,27 @@
     content: '';
     position: absolute; top: 0; right: 0;
     width: 10px; height: 100%;
-    background: linear-gradient(to right, transparent, rgba(0,0,0,0.18));
+    background: none;
     pointer-events: none;
   }
   .sheet.right::before {
     content: '';
     position: absolute; top: 0; left: 0;
     width: 10px; height: 100%;
-    background: linear-gradient(to left, transparent, rgba(0,0,0,0.12));
+    background: none;
     pointer-events: none;
     z-index: 1;
   }
 
   .sheet::after, .sheet.right::after {
     content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: repeating-linear-gradient(transparent, transparent 22px, rgba(80,55,20,0.11) 22px, rgba(80,55,20,0.11) 23px);
+    background: none;
     background-position: 0 44px;
   }
   .sheet.left::after {
-    background: repeating-linear-gradient(transparent, transparent 22px, rgba(80,55,20,0.11) 22px, rgba(80,55,20,0.11) 23px),
-                linear-gradient(to right, transparent, rgba(0,0,0,0.18));
+    background: none;
     background-position: 0 44px, 0 0;
+
   }
 
   /* Cover page: no ruled lines */
@@ -134,7 +134,7 @@
   .sheet.right .dogear {
     position: absolute; top: 0; right: 0;
     width: 18px; height: 18px;
-    background: linear-gradient(225deg, #c8a050 50%, #f8f2e2 50%);
+    background: none;
     border-radius: 0 2px 0 0;
   }
 
@@ -152,6 +152,8 @@
   .pd { font-size: 10.5px; color: #3a2510; line-height: 1.4; }
   .cr { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #1a1005; margin-bottom: 4px; }
   .ci { font-size: 12px; color: #8c6230; width: 13px; text-align: center; }
+  .cr a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .cr a:hover { border-bottom-color: #8c6230; }
 
   .spread.fout-left  .sheet.left  { animation: foutL 0.2s ease-in forwards; }
   .spread.fout-right .sheet.right { animation: foutR 0.2s ease-in forwards; }
@@ -278,20 +280,20 @@ const COVER = {
 const spreads = [
   COVER,
   {
-    label: 'I — Intro',
+    label: 'I — Intro/Skills',
     leftTempo: 'Andante con moto', leftTitle: 'About Me',
     leftHtml: `
       <div class="lbl">Name</div>
       <div class="txt">Alejandro Olivares-Lopez</div>
       <div class="div"></div>
       <div class="lbl">Currently</div>
-      <div class="txt">CS student at <em>UC Irvine</em><br>Resident Advisor<br>Aspiring software engineer</div>
+      <div class="txt">CS student at <em>UC Irvine</em><br>Aspiring software engineer & product manager</div>
       <div class="div"></div>
       <div class="lbl">Based in</div>
       <div class="txt">Irvine,  CA</div>
       <div class="div"></div>
       <div class="lbl">Interests</div>
-      <div class="txt">Real estate · Software engineering · AI/ML · Community building</div>
+      <div class="txt">Playing Basketball · Going to the Gym · Playing Video Games (Destiny, Overwatch) · Playing Instruments (Saxophone)</div>
       <div class="div"></div>
       <div class="lbl">Seeking</div>
       <div class="txt">SWE & Product Management internships</div>
@@ -315,7 +317,7 @@ const spreads = [
     `
   },
   {
-    label: 'II — Work',
+    label: 'II — Projects/Experience',
     leftTempo: 'Allegro moderato', leftTitle: 'Projects',
     leftHtml: `
       <div class="pt">Cactus Farm Manager</div>
@@ -333,34 +335,40 @@ const spreads = [
     rightTempo: 'Maestoso', rightTitle: 'Experience',
     rightHtml: `
       <div class="lbl">Resident Advisor · UC Irvine</div>
-      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:2px;">Arroyo Vista — Current</div>
-      <div class="txt">Mentored a student residential community while balancing rigorous CS coursework and on-call duties.</div>
+      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:2px;">UCI Student Housing</div>
+      <div class="txt">Supported 30+ residents with academic, social, and personal concerns through one-on-one guidance.</div>
+      <div class="txt">Planned and hosted 4–5 community programs per quarter, engaging 15–20 residents per event.</div>
       <div class="div"></div>
-      <div class="lbl">Real Estate Investor</div>
-      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:2px;">Coachella Valley — Active</div>
-      <div class="txt">STR strategy targeting Coachella & Stagecoach festival seasons.</div>
+      <div class="lbl">Undergraduate Research Assistant </div>
+      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:2px;">UCI School of Medicine</div>
+      <div class="txt">Developing a multimodal EEG monitoring system integrating invasive ECoG with scalp EEG for acute brain injury
+patients</div>
+      <div class = "txt"> Analyzing EEG and clinical data to identify seizures and biomarkers, applying ML models and risk classification.</div>
       <div class="div"></div>
-      <div class="lbl">Apple Store Candidate</div>
-      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:2px;">Coachella Valley — In Progress</div>
-      <div class="txt">Progressing through Apple's multi-stage hiring process post online assessment.</div>
+      <div class="lbl">Summer Resident Advisor</div>
+      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:2px;">UCI Student Housing</div>
+      <div class="txt"> Oversaw and supported a residential community of 128 incoming students, fostering a welcoming and inclusive
+environment.</div>
+      <div class= "txt"> Held 1-on-1 mentorship meetings with 24 assigned mentees to provide academic guidance, campus resource
+navigation and personal support.</div>
     `
   },
   {
-    label: 'III — Finale',
+    label: 'III — Education/Contact',
     leftTempo: 'Grave e sostenuto', leftTitle: 'Education',
     leftHtml: `
-      <div class="lbl">UC Irvine — B.S. CS</div>
-      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:3px;">2021 – Present</div>
-      <div class="txt">Surpassed graduation units; extending enrollment strategically for recruiting cycles.</div>
+      <div class="lbl">UC Irvine B.S. Computer Science</div>
+      <div class="txt" style="font-size:9px;color:#7a5820;margin-bottom:3px;">2023 – Present</div>
       <div class="div"></div>
       <div class="lbl">Coursework</div>
       <div class="tags">
         <span class="tag">Database Systems</span>
-        <span class="tag">Software Eng.</span>
+        <span class="tag">Discrete
+Mathematics for Computer Science</span>
         <span class="tag">Machine Learning</span>
         <span class="tag">Probabilistic Models</span>
-        <span class="tag">Algorithms & DS</span>
-        <span class="tag">Computer Arch.</span>
+        <span class="tag">Algorithms & Data Structures</span>
+        <span class="tag">Computer Architecture</span>
       </div>
       <div class="div"></div>
       <div class="lbl">Highlights</div>
@@ -368,15 +376,16 @@ const spreads = [
     `,
     rightTempo: 'Dolce', rightTitle: 'Contact',
     rightHtml: `
-      <div class="txt" style="font-style:italic;color:#5c3a10;margin-bottom:8px;font-size:10px;">Open to internships, part-time tech roles.</div>
-      <div class="cr"><i class="ti ti-mail ci" aria-hidden="true"></i> aleja.oliva7@gmail.com</div>
-      <div class="cr"><i class="ti ti-brand-linkedin ci" aria-hidden="true"></i> https://www.linkedin.com/in/alejandro-olivares-lopez/</div>
-      <div class="cr"><i class="ti ti-brand-github ci" aria-hidden="true"></i> https://github.com/aolivareslopez</div>
+      <div class="cr"><i class="ti ti-mail ci" aria-hidden="true"></i> <a href="mailto:aleja.oliva7@gmail.com">aleja.oliva7@gmail.com</a></div>
+      <div class="cr"><i class="ti ti-brand-linkedin ci" aria-hidden="true"></i> <a href="https://www.linkedin.com/in/alejandro-olivares-lopez/" target="_blank" rel="noopener">linkedin.com/in/alejandro-olivares-lopez</a></div>
+      <div class="cr"><i class="ti ti-brand-github ci" aria-hidden="true"></i> <a href="https://github.com/aolivareslopez" target="_blank" rel="noopener">github.com/aolivareslopez</a></div>
       <div class="cr"><i class="ti ti-map-pin ci" aria-hidden="true"></i> Irvine, CA</div>
       <div class="div"></div>
       <div class="lbl">Resume</div>
-      <div class="txt">Available upon request</div>
-      <div class="div"></div>
+      <div class="cr">
+        <i class="ti ti-file-text ci" aria-hidden="true"></i>
+        <a href="alejandro_olivares_lopez_resume.pdf" download="Alejandro_Olivares-Lopez_Resume.pdf">Download Resume (PDF)</a>
+      </div>
     `
   }
 ];
